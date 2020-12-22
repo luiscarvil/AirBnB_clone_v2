@@ -7,11 +7,11 @@ from datetime import datetime
 
 
 def do_pack():
+    time_format = strftime("%Y%m%d%H%M%S")
     try:
         local("mkdir -p versions")
         local("tar -cvzf versions/web_static_{:s}.tgz web_static/".format(
-              strftime("%Y%m%d%H%M%S")))
-        return ("versions/web_static_{:s}.tgz".format(
-                strftime("%Y%m%d%H%M%S")))
+              time_format))
+        return ("versions/web_static_{:s}.tgz".format(time_format))
     except Exception:
         return None
