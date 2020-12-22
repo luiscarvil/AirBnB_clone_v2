@@ -8,8 +8,8 @@ from datetime import datetime
 
 def do_pack():
     time_format = strftime("%Y%m%d%H%M%S")
+    local("mkdir -p versions")
     try:
-        local("mkdir -p versions")
         local("tar -cvzf versions/web_static_{:s}.tgz web_static/".format(
               time_format))
         return ("versions/web_static_{:s}.tgz".format(time_format))
