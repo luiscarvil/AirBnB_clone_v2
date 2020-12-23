@@ -5,6 +5,7 @@ from os.path import exists
 from fabric.api import env, run, put
 env.hosts = ['104.196.132.76', '35.243.198.29']
 
+
 def do_deploy(archive_path):
     """ do_deploy function that distributes an archive to web servers
     """
@@ -28,5 +29,5 @@ def do_deploy(archive_path):
         run('rm -rf {}'.format(path_2))
         run('ln -s {}{}/ {}'.format(path, ext_file, path_2))
         return True
-    except:
+    except Exception:
         return False
