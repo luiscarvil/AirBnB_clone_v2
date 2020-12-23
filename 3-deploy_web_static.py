@@ -7,6 +7,7 @@ from os.path import exists
 from fabric.api import env, run, put, local
 env.hosts = ['104.196.132.76', '35.243.198.29']
 
+
 def do_pack():
     """Return the archive path if the archive has been correctly generated
     """
@@ -18,6 +19,7 @@ def do_pack():
         return ("versions/web_static_{:s}.tgz".format(time_format))
     except Exception:
         return None
+
 
 def do_deploy(archive_path):
     """ do_deploy function that distributes an archive to web servers
@@ -48,10 +50,11 @@ def do_deploy(archive_path):
 
 
 def deploy():
-	""" creates and distributes an archive to your web servers, using the function deploy
-	"""
-	do_pack_path = do_pack()
-	if do_pack_path:
-		return do_deploy(do_pack_path)
-	else:
-		return False
+    """ creates and distributes an archive to your web servers,
+    using the function deploy
+    """
+    do_pack_path = do_pack()
+    if do_pack_path:
+        return do_deploy(do_pack_path)
+    else:
+        return False
