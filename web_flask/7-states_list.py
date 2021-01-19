@@ -1,27 +1,24 @@
 #!/usr/bin/python3
-"""
-    Sript that starts a Flask web application
-"""
-from flask import Flask, render_template
+"""Script that fetches data from the storage engine """
+from flask import Flask
+from flask import render_template
 from models import storage
+from models.state import State
 app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def handle_teardown(self):
-    """
-    handle teardown
-    """
+def teardown_db(exception):
+    """Closes the database again at the end of the request."""
     storage.close()
 
 
 @app.route('/states_list', strict_slashes=False)
-def state_list():
-    """
-    render states
-    """
-    states = storage.all('State').values()
-    return render_template("7-states_list.html", states=states)
+def state_li():
+    """list of all State objects present in DBStorage"""
+    states = storage.all(State)
+    return render_template('7-states_list.html', states=states)
 
-if __name__ == '__main__':
-        app.run(host='0.0.0.0', port=5000)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
