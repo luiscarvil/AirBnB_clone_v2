@@ -9,12 +9,14 @@ flask class
 """
 app = Flask(__name__)
 
+
 @app.route('/', strict_slashes=False)
 def starts_flask():
     """
     display: Hello HBNB!
     """
     return "Hello HBNB!"
+
 
 @app.route('/hbnb', strict_slashes=False)
 def starts_flask_hbtn():
@@ -23,6 +25,7 @@ def starts_flask_hbtn():
     """
     return "HBNB"
 
+
 @app.route('/c/<text>', strict_slashes=False)
 def display_C(text):
     """
@@ -30,6 +33,7 @@ def display_C(text):
     (replace underscore _ symbols with a space )
     """
     return "C {:s}".format(text.replace('_', ' '))
+
 
 @app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
@@ -40,12 +44,15 @@ def display_Python(text="is cool"):
     """
     return "Python {:s}".format(text.replace('_', ' '))
 
+
 @app.route('/number/<int:n>', strict_slashes=False)
 def display_int(n):
     """
     return display int: integer
+    """
     if isinstance(n, int):
         return "{} is a number".format(n)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
