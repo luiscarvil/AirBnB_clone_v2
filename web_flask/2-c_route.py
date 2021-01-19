@@ -9,6 +9,7 @@ flask class
 """
 app = Flask(__name__)
 
+
 @app.route('/', strict_slashes=False)
 def starts_flask():
     """
@@ -16,12 +17,14 @@ def starts_flask():
     """
     return "Hello HBNB!"
 
+
 @app.route('/hbnb', strict_slashes=False)
 def starts_flask_hbtn():
     """
     display: HBNB
     """
     return "HBNB"
+
 
 @app.route('/c/<text>', strict_slashes=False)
 def display_C(text):
