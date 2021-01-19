@@ -69,7 +69,7 @@ def display_num_odd_even(n):
     display if number is odd or even
     """
     if isinstance(n, int):
-        if (n % 2 == 0):
+        if (n % 2 != 0):
             return render_template("6-number_odd_or_even.html", n=n, eo="odd")
         else:
             return render_template("6-number_odd_or_even.html", n=n, eo="even")
