@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 """
-    Sript that starts a Flask web application
+Starts a Flask web application
 """
 from flask import Flask, render_template
 from models import storage
-import os
+from models.state import State
+
 app = Flask(__name__)
 
 
@@ -21,7 +22,7 @@ def citystate_list():
     """
     render states from storage
     """
-    states = storage.all('State').values()
+    states = storage.all(State)
     return render_template("8-cities_by_states.html", states=states)
 
 
