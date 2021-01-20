@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def handle_teardown(self):
+def handle_teardown(exception):
     """
     handle teardown
     """
