@@ -9,6 +9,7 @@ from models.amenity import Amenity
 
 app = Flask(__name__)
 
+
 @app.teardown_appcontext
 def tear_down(exception):
     """
@@ -24,7 +25,8 @@ def display_filters():
     """
     amenities = storage.all(Amenity)
     states = storage.all(State)
-    return render_template('10-hbnb_filters.html', amenities=amenities, states=states)
+    return render_template('10-hbnb_filters.html',
+                           amenities=amenities, states=states)
 
 
 if __name__ == '__main__':
